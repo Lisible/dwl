@@ -150,12 +150,25 @@ static const enum libinput_config_tap_button_map button_map =
 /* commands */
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *menucmd[] = {"wmenu-run", NULL};
+static const char *volumeupcmd[] = {"wpctl", "set-volume",
+                                    "@DEFAULT_AUDIO_SINK@", "10%+", NULL};
+static const char *volumedowncmd[] = {"wpctl", "set-volume",
+                                      "@DEFAULT_AUDIO_SINK@", "10%-", NULL};
+static const char *volumemutecmd[] = {"wpctl", "set-mute",
+                                      "@DEFAULT_AUDIO_SINK@", "toggle", NULL};
+static const char *brightnessup[] = {"xbacklight", "-inc", "4", NULL};
+static const char *brightnessdown[] = {"xbacklight", "-dec", "4", NULL};
 
 static const Key keys[] = {
     /* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
     /* modifier                  key                 function        argument */
     {MODKEY, XKB_KEY_p, spawn, {.v = menucmd}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_Return, spawn, {.v = termcmd}},
+    {0, XKB_KEY_XF86AudioLowerVolume, spawn, {.v = volumedowncmd}},
+    {0, XKB_KEY_XF86AudioRaiseVolume, spawn, {.v = volumeupcmd}},
+    {0, XKB_KEY_XF86MonBrightnessUp, spawn, {.v = brightnessup}},
+    {0, XKB_KEY_XF86MonBrightnessDown, spawn, {.v = brightnessdown}},
+    {0, XKB_KEY_XF86AudioMute, spawn, {.v = volumemutecmd}},
     {MODKEY, XKB_KEY_b, togglebar, {0}},
     {MODKEY, XKB_KEY_j, focusstack, {.i = +1}},
     {MODKEY, XKB_KEY_k, focusstack, {.i = -1}},
