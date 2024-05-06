@@ -37,10 +37,10 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "/path/to/your/image", NULL,
-        NULL /* terminate */
+    "fcitx5", "-d",   NULL, "swaybg",
+    "-m",     "fill", "-i", "/home/clements/Pictures/bg/bg.jpg",
+    NULL,     NULL /* terminate */
 };
-
 
 static const Rule rules[] = {
     /* app_id             title       tags mask     isfloating   monitor */
