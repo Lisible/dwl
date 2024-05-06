@@ -164,6 +164,9 @@ static const Key keys[] = {
     /* modifier                  key                 function        argument */
     {MODKEY, XKB_KEY_p, spawn, {.v = menucmd}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_Return, spawn, {.v = termcmd}},
+    {0, XKB_KEY_Print, regions, SHCMD("grim - | wl-copy")},
+    {WLR_MODIFIER_SHIFT, XKB_KEY_Print, regions,
+     SHCMD("grim -g \"$(slurp)\" - | wl-copy")},
     {0, XKB_KEY_XF86AudioLowerVolume, spawn, {.v = volumedowncmd}},
     {0, XKB_KEY_XF86AudioRaiseVolume, spawn, {.v = volumeupcmd}},
     {0, XKB_KEY_XF86MonBrightnessUp, spawn, {.v = brightnessup}},
