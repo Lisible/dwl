@@ -37,9 +37,28 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-    "fcitx5", "-d",   NULL, "swaybg",
-    "-m",     "fill", "-i", "/home/clements/Pictures/bg/bg.jpg",
-    NULL,     NULL /* terminate */
+    "fcitx5",
+    "-d",
+    NULL,
+    "swaybg",
+    "-m",
+    "fill",
+    "-i",
+    "/home/clements/Pictures/bg/bg.jpg",
+    NULL,
+    "systemctl",
+    "--user",
+    "start",
+    "xdg-desktop-portal",
+    "xdg-desktop-portal-wlr",
+    NULL,
+    "dbus-update-activation-environment",
+    "--systemd",
+    "WAYLAND_DISPLAY",
+    "XDG_CURRENT_DESKTOP",
+    NULL,
+
+    NULL /* terminate */
 };
 
 static const Rule rules[] = {
